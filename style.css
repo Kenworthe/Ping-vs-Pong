@@ -3,4 +3,5 @@ div {
   justify-content: center;
 }
 canvas {
+	border: 2px solid black;
 }
