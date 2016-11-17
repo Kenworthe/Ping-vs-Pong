@@ -27,7 +27,9 @@ function frameUpdate(timeStamp){
 	app.lastTime = timeStamp;
 	// console.log(1/deltaTime);
 
-	checkBounce();
+//add if statement to optimize calling check wall & check paddle, only when necessary.
+	bounceWall();
+	bouncePaddle();
 	//ran into issue: ball.pos.x === paddle.pos.x "too precise!!!"
 	app.ball.move();
 	app.playerOne.move();
@@ -43,36 +45,54 @@ function drawScene(){
 	app.context.fillStyle="white";
 	app.context.fillRect(0,0,app.canvas.width,app.canvas.height);
 
-	app.context.moveTo(app.canvas.width/2, 0);  	//test middle line
-	app.context.lineTo(app.canvas.width/2, app.canvas.height);  	//test middle line
-	app.context.stroke();  	//test middle line
+	// app.context.moveTo(app.canvas.width/2, 0);  	//test middle line
+	// app.context.lineTo(app.canvas.width/2, app.canvas.height);  	//test middle line
+	// app.context.stroke();  	//test middle line
 
 	app.ball.drawMe(app.context);
 	app.playerOne.drawMe(app.context);
 	app.playerTwo.drawMe(app.context);
 }
 
-function checkBounce(){
-	let ballHitbox = app.ball.radius;
-	let paddleHitbox ;
-	//top wall collision
-	if (app.ball.position.y >= app.canvas.height || app.ball.position.y <= 0){
+function bounceWall(){
+	if (app.ball.position.y >= (app.canvas.height - app.ball.radius) || 
+		app.ball.position.y <= app.ball.radius){
 		app.ball.speed.y = -(app.ball.speed.y);
 	}
 
-	if((app.ball.position.x === app.playerOne.position.x) && 
+	if (app.ball.position.x >= (app.canvas.width - app.ball.radius)){
+		app.playerTwo.score += 1;
+		spawnBall();
+	}
+
+	if (app.ball.position.x <= app.ball.radius){
+		app.playerOne.score += 1;
+		spawnBall();
+	}
+}
+
+function bouncePaddle(){
+
+	// if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.width / 2 &&
+	//    app.ball.position.x + app.ball.radius > app.playerOne.position.x - app.playerOne.width / 2 &&
+	//    app.ball.position.y > app.playerOne.position.y - app.playerOne.height / 2 &&
+	//    app.ball.position.y < app.playerOne.position.y + app.playerOne.height / 2)
+	// {
+	// 	app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
+	// }
+
+	if(app.ball.position.x === app.playerOne.position.x && 
 	   (app.ball.position.y > app.playerOne.position.y - 50) &&
 	   (app.ball.position.y < app.playerOne.position.y + 50)
 	   ){
-		app.ball.speed.x = -(app.ball.speed.x);
-	//add speed upon impact. causes bug.
+		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
 	}
+
 	if(app.ball.position.x === app.playerTwo.position.x && 
 	   (app.ball.position.y > app.playerTwo.position.y - 50) &&
 	   (app.ball.position.y < app.playerTwo.position.y + 50)
 	   ){
-		app.ball.speed.x = -(app.ball.speed.x);
-	//add speed upon impact. causes bug.
+		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
 	}
 }
 
@@ -83,9 +103,10 @@ function spawnBall(){
 			y: app.canvas.height / 2
 		},
 		speed: {
-			x: 3,
-			y: 1,
+			x: 2,
+			y: (Math.random() * 3) - 1
 		},
+		multiplier: 1,
 		radius: 5,
 		color: '#000000',
 		drawMe: function(context){
@@ -101,12 +122,13 @@ function spawnBall(){
 
 function spawnPlayerOne(){
 	app.playerOne = {
+		score: 0,
 		position: {
 			x: app.canvas.width - 30,
 			y: app.canvas.height / 2
 		},
 		size: {
-			width: 5,
+			width: 8,
 			height: 100
 		},
 		// edge: {
@@ -130,12 +152,13 @@ function spawnPlayerOne(){
 
 function spawnPlayerTwo(){
 	app.playerTwo = {
+		score: 0,
 		position: {
 			x: app.canvas.width - 690,
 			y: app.canvas.height / 2
 		},
 		size: {
-			width: 5,
+			width: 8,
 			height: 100
 		},
 		// edge: {
@@ -170,9 +193,10 @@ function drawBall(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
     context.fillStyle = obj.color;
+    // context.fillRect(obj.radius, obj.radius);
+    context.stroke();
     context.beginPath();
     context.arc(0, 0, obj.radius, 0, (2 * Math.PI));
-    // context.stroke();
     // context.fill();
     context.restore();
 }
