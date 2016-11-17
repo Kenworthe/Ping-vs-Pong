@@ -5,3 +5,8 @@ div {
 canvas {
 	border: 2px solid black;
 }
+
+#score {
+	font-size: 36px;
+	font-weight: 900;
+}

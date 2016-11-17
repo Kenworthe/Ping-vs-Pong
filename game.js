@@ -15,6 +15,7 @@ function startApp(){
 function restartGame(){
 //reset score = 0;
 //reset ball speed = default;
+//reset ball curve = false;
 	spawnBall();
 	spawnPlayerOne();
 	spawnPlayerTwo();
@@ -30,13 +31,11 @@ function frameUpdate(timeStamp){
 //add if statement to optimize calling check wall & check paddle, only when necessary.
 	bounceWall();
 	bouncePaddle();
-	//ran into issue: ball.pos.x === paddle.pos.x "too precise!!!"
+
 	app.ball.move();
 	app.playerOne.move();
 	app.playerTwo.move();
-
 	app.context.clearRect(0, 0, app.canvas.width, app.canvas.height);
-
 
 	drawScene();
 }
@@ -62,37 +61,45 @@ function bounceWall(){
 
 	if (app.ball.position.x >= (app.canvas.width - app.ball.radius)){
 		app.playerTwo.score += 1;
+		updateScore();
 		spawnBall();
 	}
 
 	if (app.ball.position.x <= app.ball.radius){
 		app.playerOne.score += 1;
+		updateScore();
 		spawnBall();
 	}
 }
 
+function updateScore(){
+	document.getElementById('score').innerHTML = ('Score: ' + app.playerTwo.score + ' - ' + app.playerOne.score);
+}
+
 function bouncePaddle(){
+	let distFromP1Center = (app.ball.position.y - app.playerOne.position.y);
+	let distFromP2Center = (app.ball.position.y - app.playerTwo.position.y);
 
-	// if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.width / 2 &&
-	//    app.ball.position.x + app.ball.radius > app.playerOne.position.x - app.playerOne.width / 2 &&
-	//    app.ball.position.y > app.playerOne.position.y - app.playerOne.height / 2 &&
-	//    app.ball.position.y < app.playerOne.position.y + app.playerOne.height / 2)
-	// {
-	// 	app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
-	// }
-
-	if(app.ball.position.x === app.playerOne.position.x && 
-	   (app.ball.position.y > app.playerOne.position.y - 50) &&
-	   (app.ball.position.y < app.playerOne.position.y + 50)
-	   ){
+	if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.size.width / 2 &&
+	   app.ball.position.x + app.ball.radius > app.playerOne.position.x - app.playerOne.size.width / 2 &&
+	   app.ball.position.y > app.playerOne.position.y - app.playerOne.size.height / 2 &&
+	   app.ball.position.y < app.playerOne.position.y + app.playerOne.size.height / 2)
+	{
 		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
+		app.ball.speed.y = (distFromP1Center * 0.15);
+		app.ball.curveUp = false;
+		app.ball.curveDown = true;
 	}
 
-	if(app.ball.position.x === app.playerTwo.position.x && 
-	   (app.ball.position.y > app.playerTwo.position.y - 50) &&
-	   (app.ball.position.y < app.playerTwo.position.y + 50)
-	   ){
+	if(app.ball.position.x - app.ball.radius > app.playerTwo.position.x - app.playerTwo.size.width / 2 &&
+	   app.ball.position.x - app.ball.radius < app.playerTwo.position.x + app.playerTwo.size.width / 2 &&
+	   app.ball.position.y > app.playerTwo.position.y - app.playerTwo.size.height / 2 &&
+	   app.ball.position.y < app.playerTwo.position.y + app.playerTwo.size.height / 2)
+	{
 		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
+		app.ball.speed.y = (distFromP2Center * 0.15);
+		app.ball.curveDown = false;
+		app.ball.curveUp = true;
 	}
 }
 
@@ -103,19 +110,26 @@ function spawnBall(){
 			y: app.canvas.height / 2
 		},
 		speed: {
-			x: 2,
+			x: 4,
 			y: (Math.random() * 3) - 1
 		},
-		multiplier: 1,
+		multiplier: 1.1,
 		radius: 5,
 		color: '#000000',
+		curveDown: false,
+		curveUp: false,
 		drawMe: function(context){
 			drawBall(context, this);
 		},
 		move : function(){
+			if(this.curveDown === true){
+				this.speed.y += .1;
+			};
+			if(this.curveUp === true){
+				this.speed.y -= .1;
+			}
 			this.position.x += this.speed.x;
 			this.position.y += this.speed.y;
-			//ADD FUNCTION FOR BALL MOVEMENT.
 		}
 	}
 }
@@ -131,10 +145,6 @@ function spawnPlayerOne(){
 			width: 8,
 			height: 100
 		},
-		// edge: {
-		// 	upper: this.position.y - this.size.height / 2,
-		// 	lower: this.position.y + this.size.height / 2
-		// },
 		color: '#0000FF',
 		drawMe: function(context){
 			drawPaddle(context, this);
@@ -161,15 +171,12 @@ function spawnPlayerTwo(){
 			width: 8,
 			height: 100
 		},
-		// edge: {
-		// 	upper: this.position.y - this.size.height / 2,
-		// 	lower: this.position.y + this.size.height / 2
-		// },
 		color: '#FF0000',
 		drawMe: function(context){
 			drawPaddle(context, this);
 		},
 		move : function(){
+			// this.position.y = app.ball.position.y; //for AI use.
 			if(this.moveUp && this.position.y > 52){
 				this.position.y -= 8;
 			}
@@ -246,42 +253,6 @@ function myKeyUp(e){
 		playerTwoReleaseDown();
 	}
 }
-
-// function myKeyDown(e){
-//   switch (e.keyCode) {
-//     case 38:
-//       playerOnePressUp();
-//       break;
-//     case 40:
-//       playerOnePressDown();
-//       break;
-
-//     case 87:
-//       playerTwoPressUp();
-//       break;
-//     case 83:
-//       playerTwoPressDown();
-//       break;
-// 	}
-// }
-
-// function myKeyUp(e){
-//     switch (e.keyCode) {
-//       case 38:
-//         playerOneReleaseUp();
-//         break;
-//       case 40:
-//         playerOneReleaseDown();
-//         break;
-
-//       case 87:
-//         playerTwoReleaseUp();
-//         break;
-//       case 83:
-//         playerTwoReleaseDown();
-//         break;
-// 	}
-// }
 
 //playerOne
 function playerOnePressUp() {
