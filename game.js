@@ -8,23 +8,55 @@ function startApp(){
 
 	window.addEventListener('keydown', myKeyDown, false);
 	window.addEventListener('keyup', myKeyUp, false);
+	// window.addEventListener('click', mouseDown, false);
 
 	restartGame();
 }
 
+function newGame(){
+	spawnStartButton();
+}
+
+function spawnStartButton(){
+	// app.startButton = {
+	// 	position: {
+	// 		x: app.canvas.width / 2,
+	// 		y: app.canvas.height / 2
+	// 	},
+	// 	size: {
+	// 		width: 400,
+	// 		height: 200
+	// 	},
+	// 	color: '#FF0000',
+	// 	drawMe: function(context){
+	// 		drawStartButton(context, this);
+	// 	},
+	// }
 //function new game 
 //draw Start
+//ask AI or 2P
+//restartGame();
+//but add countdown??
+}
 
+// function drawStartButton(context, obj){
+// 	context.save();
+// 	context.translate();
+// 	context.fillStyle();
+// 	context.fillRect();
+// 	context.restore();
+// }
 
+function askPlayers(){
+// ask One player or two player
+// restartGame();
+}
 
 function restartGame(){
-//reset score = 0;
-//reset ball speed = default;
-//reset ball curve = false;
 	spawnBall();
 	spawnPlayerOne();
 	spawnPlayerTwo();
-//ASK if vs AI or P2. spawn accordingly.
+	updateScore();
 }
 
 function frameUpdate(timeStamp){
@@ -97,9 +129,11 @@ function bouncePaddle(){
 	   app.ball.position.y > app.playerOne.position.y - app.playerOne.size.height / 2 &&
 	   app.ball.position.y <= app.playerOne.position.y)
 	{
-		// increaseSpeed(app.ball.speed.x);
+		// increaseSpeed(app.ball.speed.x);  //ignore this for now, testing new function.
 		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
+		// increase/decrease angle based on ball distance from center paddle.
 		app.ball.speed.y = (distFromP1Center * 0.15);
+		// apply downward curve if ball hits upper half of paddle.
 		app.ball.curve = 'down';
 	}
 // ball hits bottom half of P1 -> curve up
@@ -143,31 +177,6 @@ function bouncePaddle(){
 // 	}
 // 	else {
 // 		currentSpeed = -(currentSpeed);
-// 	}
-// }
-
-// function bouncePaddle(){
-// 	let distFromP1Center = (app.ball.position.y - app.playerOne.position.y);
-// 	let distFromP2Center = (app.ball.position.y - app.playerTwo.position.y);
-
-// 	if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.size.width / 2 &&
-// 	   app.ball.position.x + app.ball.radius > app.playerOne.position.x - app.playerOne.size.width / 2 &&
-// 	   app.ball.position.y > app.playerOne.position.y - app.playerOne.size.height / 2 &&
-// 	   app.ball.position.y < app.playerOne.position.y + app.playerOne.size.height / 2)
-// 	{
-// 		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
-// 		app.ball.speed.y = (distFromP1Center * 0.15);
-// 		app.ball.curve = 'down';
-// 	}
-
-// 	if(app.ball.position.x - app.ball.radius > app.playerTwo.position.x - app.playerTwo.size.width / 2 &&
-// 	   app.ball.position.x - app.ball.radius < app.playerTwo.position.x + app.playerTwo.size.width / 2 &&
-// 	   app.ball.position.y > app.playerTwo.position.y - app.playerTwo.size.height / 2 &&
-// 	   app.ball.position.y < app.playerTwo.position.y + app.playerTwo.size.height / 2)
-// 	{
-// 		app.ball.speed.x = -(app.ball.speed.x * app.ball.multiplier);
-// 		app.ball.speed.y = (distFromP2Center * 0.15);
-// 		app.ball.curve = 'up';
 // 	}
 // }
 
@@ -276,18 +285,6 @@ function drawBall(context, obj) {
 }
 
 
-//ADD ARRAY TO ALLOW MULTIPLE INPUTS???
-	// let multipleKeys = []
-
-//if UP -> call P1 Up, then break
-//if DOWN -> call P1 Down, then break
-//if LEFT -> call P1 forehand tilt
-//if RIGHT -> call P1 backhand tilt
-
-//if W -> call P2 Up, then break
-//if S -> call P2 down, then break
-//if D -> call P2 forehand tilt
-//if A -> call P2 backhand tilt
 function myKeyDown(e){
 	if (e.keyCode === 38){
 		playerOnePressUp();
@@ -296,7 +293,6 @@ function myKeyDown(e){
 		playerOnePressDown();
 	}
 //add playerOne LEFT and RIGHT input
-
 
 	else if (e.keyCode === 87){
 		playerTwoPressUp();
@@ -350,8 +346,18 @@ function playerTwoReleaseDown() {
 }
 
 
+//ADD ARRAY TO ALLOW MULTIPLE INPUTS???
+	// let multipleKeys = []
 
+//if UP -> call P1 Up, then break
+//if DOWN -> call P1 Down, then break
+//if LEFT -> call P1 forehand tilt
+//if RIGHT -> call P1 backhand tilt
 
+//if W -> call P2 Up, then break
+//if S -> call P2 down, then break
+//if D -> call P2 forehand tilt
+//if A -> call P2 backhand tilt
 
 
 
