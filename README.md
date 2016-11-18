@@ -42,6 +42,11 @@ Player 2: W, S
 * Sublime Text 3
 * Trello
 
+**Resources:** 
+* https://developer.mozilla.org/en-US/docs/Games/Anatomy
+* https://developer.mozilla.org/en-US/docs/Web/API/Performance/
+* http://www.w3schools.com/graphics/game_intro.asp
+
 
 ## Notes:
 ***********************
@@ -56,6 +61,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 - Added curve by changing the speed of y (rate of change).
 - Curves supposed to mimick forehand/backhand swing by a table tennis player.
 - Need to add sounds. If I include bg music, should also include mute toggle.
+- Put entirety of app in single canvas? Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM.
 
 *************************
 **Known Bugs:** 

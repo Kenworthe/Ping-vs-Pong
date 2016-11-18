@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ping vs. Pong</title>
+	<title>Ping Pong</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body onLoad="startApp()">
+<body onLoad='startMenu()'>
+	<header>
+		<h1>Ping Pong</h1>
+	</header>
 
-<header>
-	<h1>Ping vs. Pong</h1>
-</header>
-	<div>
-		<canvas id="myCanvas" width="720" height="400"></canvas>
-	</div>
-	<div id='score'>
-		0 - 0
-	</div>
+	<section>
+   <!-- <canvas id='menuCanvas' width='720' height='400'></canvas> -->
+		<canvas id='gameCanvas' width='720' height='400'></canvas>
+		<div id='menu' class='fakeCanvas'></div>
+	</section>
 
-<script type="text/javascript" src="game.js"></script>
+	<div id='score' class='scoreboard'>	0 - 0 </div>
 
+	<script type="text/javascript" src='game.js'></script>
+<!--<script type="text/javascript" src='menu.js'></script>-->
 </body>
 </html>

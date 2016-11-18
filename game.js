@@ -1,7 +1,7 @@
 let app = {};
 
 function startApp(){
-	app.canvas = document.getElementById('myCanvas');
+	app.canvas = document.getElementById('gameCanvas');
 	app.context = app.canvas.getContext('2d');
 	app.lastTime = window.performance.now();
 	window.requestAnimationFrame(frameUpdate);
@@ -11,45 +11,6 @@ function startApp(){
 	// window.addEventListener('click', mouseDown, false);
 
 	restartGame();
-}
-
-function newGame(){
-	spawnStartButton();
-}
-
-function spawnStartButton(){
-	// app.startButton = {
-	// 	position: {
-	// 		x: app.canvas.width / 2,
-	// 		y: app.canvas.height / 2
-	// 	},
-	// 	size: {
-	// 		width: 400,
-	// 		height: 200
-	// 	},
-	// 	color: '#FF0000',
-	// 	drawMe: function(context){
-	// 		drawStartButton(context, this);
-	// 	},
-	// }
-//function new game 
-//draw Start
-//ask AI or 2P
-//restartGame();
-//but add countdown??
-}
-
-// function drawStartButton(context, obj){
-// 	context.save();
-// 	context.translate();
-// 	context.fillStyle();
-// 	context.fillRect();
-// 	context.restore();
-// }
-
-function askPlayers(){
-// ask One player or two player
-// restartGame();
 }
 
 function restartGame(){
@@ -99,7 +60,6 @@ function bounceWall(){
 		app.ball.position.y = (app.ball.radius + 1);
 		app.ball.speed.y = -(app.ball.speed.y);
 	}
-
 // ball hits right wall -> P2 scores, serve to P2
 	if (app.ball.position.x >= (app.canvas.width - app.ball.radius)){
 		app.playerTwo.score += 1;
@@ -344,49 +304,3 @@ function playerTwoReleaseUp() {
 function playerTwoReleaseDown() {
 	app.playerTwo.moveDown = false;
 }
-
-
-//ADD ARRAY TO ALLOW MULTIPLE INPUTS???
-	// let multipleKeys = []
-
-//if UP -> call P1 Up, then break
-//if DOWN -> call P1 Down, then break
-//if LEFT -> call P1 forehand tilt
-//if RIGHT -> call P1 backhand tilt
-
-//if W -> call P2 Up, then break
-//if S -> call P2 down, then break
-//if D -> call P2 forehand tilt
-//if A -> call P2 backhand tilt
-
-
-
-
-//function vs AI or vs Player2?
-//function spawn background
-
-//function spawn ball
-
-//function spawn paddles
-
-//function draw all 
-
-//function framerate???
-
-
-//function event listeners (controls) WASD vs Directional keys.
-
-//function keep score, update DOM (outside of canvas)
-
-//funciton collision (and curve ball?)
-
-//function power ups (optional)
-
-//function game over (who wins?)
-
-//function restart game?
-//function reset score (then update DOM)
-
-
-//add AI (track ball perfect with a % chance to not track ball well. 
-//increase % for lower difficulty.)

@@ -1,9 +1,47 @@
-div {
-  display: flex;
-  justify-content: center;
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 }
+
+section {
+	display:flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
 canvas {
+	background: red;
 	border: 2px solid black;
+	margin: 0;
+}
+
+div.fakeCanvas {
+	background: blue;
+	border: 2px solid black;
+	margin: 0;
+	width: 720px;
+	height: 400px;
+	position: absolute;
+
+}
+
+div.scoreboard {
+	background: green;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+/*
+#menuCanvas {
+}*/
+
+#gameCanvas {
+	
 }
 
 #score {
