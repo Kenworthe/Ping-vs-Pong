@@ -29,20 +29,23 @@ Player 2: W, S
 
 ## Technologies Used: 
 ***********************
-**Languages:** 
+**Languages: ** 
 * Javascript
 * HTML
 * CSS
 
+**Libraries: **
+* jQuery
+
 **Website Hosting:** 
 * Firebase
 
-**Tools:** 
+**Tools: ** 
 * Git/GitHub
 * Sublime Text 3
 * Trello
 
-**Resources:** 
+**Resources: ** 
 * https://developer.mozilla.org/en-US/docs/Games/Anatomy
 * https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 * http://www.w3schools.com/graphics/game_intro.asp
