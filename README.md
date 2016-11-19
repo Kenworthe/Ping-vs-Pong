@@ -68,6 +68,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
 *************************
 **Known Bugs:** 
+
 1. If ball.speed is too high, it will not collide with paddle and go through it. Caused by framerate OR poor hitbox detection. Potential fix: adjust hitboxes OR add raycasting.
 
 2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge.
