@@ -6,7 +6,7 @@
 
 Pong with curves! For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
 
-The ball will curve up or down at different velocities depending on how you hit it with your paddle. Trick shots and mind games galore!
+The ball will curve up or down at different velocities depending on how you hit it with your paddle. This allows for some pretty crazy volleys once the speed picks up. Trick shots and mind games galore!
 
 **Play it here:** 
 
@@ -29,23 +29,23 @@ Player 2: W, S
 
 ## Technologies Used: 
 
-**Languages: ** 
+**Languages:** 
 * Javascript
 * HTML
 * CSS
 
-**Libraries: **
+**Libraries:** 
 * jQuery
 
 **Website Hosting:** 
 * Firebase
 
-**Tools: ** 
+**Tools:** 
 * Git/GitHub
 * Sublime Text 3
 * Trello
 
-**Resources: ** 
+**Resources:** 
 * https://developer.mozilla.org/en-US/docs/Games/Anatomy
 * https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 * http://www.w3schools.com/graphics/game_intro.asp
@@ -53,7 +53,7 @@ Player 2: W, S
 *************************
 ## Notes: 
 
-- Explanation of why I chose window.performance.now();  
+- Explanation of why I chose window.performance.now();
 https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
 - Adding paddle UP/DOWN movement was easy.
@@ -69,7 +69,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 *************************
 **Known Bugs:** 
 1. If ball.speed is too high, it will not collide with paddle and go through it. Caused by framerate OR poor hitbox detection. Potential fix: adjust hitboxes OR add raycasting.
-2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then set ball.position.y at a bit lower than top/bottom edge.
+
+2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge.
 
 ***************************
 ### ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
