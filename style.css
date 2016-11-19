@@ -5,6 +5,10 @@ body {
 	align-items: center;
 }
 
+h1{
+	font-size: 36px;
+}
+
 section {
 	display:flex;
 	flex-direction: column;
@@ -12,39 +16,49 @@ section {
 }
 
 canvas {
-	background: red;
+	background: white;
 	border: 2px solid black;
 	margin: 0;
 }
 
 div.fakeCanvas {
-	background: blue;
+	background: white;
 	border: 2px solid black;
 	margin: 0;
 	width: 720px;
 	height: 400px;
 	position: absolute;
 
+	display: flex;
+	flex-direction: row;
+}
+
+div.menubutton {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 400px;
+	flex-grow: 0.5;
+
+	font-size: 40px;
+	color: black;
+}
+
+div.twoplayer:hover {
+	background: pink;
+}
+div.oneplayer:hover {
+	background: lightblue;
 }
 
 div.scoreboard {
-	background: green;
 	text-align: center;
+	font-size: 36px;
+	font-weight: 900;
 }
 
 .hidden {
 	display: none;
 }
 
-/*
-#menuCanvas {
-}*/
-
-#gameCanvas {
-	
-}
-
-#score {
-	font-size: 36px;
-	font-weight: 900;
+#gameCanvas {	
 }

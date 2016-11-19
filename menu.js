@@ -1,6 +1,22 @@
 let menu = {};
 
+function startMenu(){
 
+}
+
+$('#twoPlayerButton').click(pickTwoPlayer);
+$('#onePlayerButton').click(pickOnePlayer);
+
+function pickOnePlayer(){
+	//make hidden
+	startApp();
+}
+
+function pickTwoPlayer(){
+	$('.fakeCanvas').children().hide();
+	$('.fakeCanvas').hide();
+	setTimeout(startApp, 1000);
+}
 
 // function startMenu(){
 // 	menu.canvas = document.getElementById('menuCanvas');

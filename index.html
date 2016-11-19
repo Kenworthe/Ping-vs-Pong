@@ -13,13 +13,16 @@
 	<section>
    <!-- <canvas id='menuCanvas' width='720' height='400'></canvas> -->
 		<canvas id='gameCanvas' width='720' height='400'></canvas>
-		<div id='menu' class='fakeCanvas'></div>
+		<div id='menu' class='fakeCanvas'>
+			<div id='twoPlayerButton' class='menubutton twoplayer'>2P</div>
+			<div id='onePlayerButton' class='menubutton oneplayer'>1P</div>
+		</div>
 	</section>
 
 	<div id='score' class='scoreboard'>	0 - 0 </div>
 
 	<script type="text/javascript" src='node_modules/jquery/dist/jquery.min.js'></script>
 	<script type="text/javascript" src='game.js'></script>
-<!--<script type="text/javascript" src='menu.js'></script>-->
+	<script type="text/javascript" src='menu.js'></script>
 </body>
 </html>
