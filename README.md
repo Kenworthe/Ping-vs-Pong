@@ -1,25 +1,25 @@
 # Ping vs. Pong
 **By: Kenneth Lin**
 ***********************
-***********************
 
 ## Overview: 
-***********************
 
-60fps Pong with curves! I based my project on the classic arcade game Pong. In both sports and competitive gaming, balance is crucial in order for competitors to demonstrate skill - and to me, Pong represents the earliest iteration of that idea. I used HTML canvas and Javascript to create and render the physics and game logic. 
+Pong with curves! For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
 
-**Check it out here!** 
+The ball will curve up or down at different velocities depending on how you hit it with your paddle. Trick shots and mind games galore!
+
+**Play it here:** 
 
 (URL)
 
-## Controls:
-***********************
+## Controls: 
+
 Player 1: UP, DOWN
 
 Player 2: W, S
 
-## Features:
-***********************
+## Features: 
+
 * 2 paddles!
 * 1 ball!
 * So many curves!
@@ -28,7 +28,7 @@ Player 2: W, S
 * Action! Excitement!! Explosions!!! (no not really..)
 
 ## Technologies Used: 
-***********************
+
 **Languages: ** 
 * Javascript
 * HTML
@@ -50,9 +50,9 @@ Player 2: W, S
 * https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 * http://www.w3schools.com/graphics/game_intro.asp
 
+*************************
+## Notes: 
 
-## Notes:
-***********************
 - Explanation of why I chose window.performance.now();  
 https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
