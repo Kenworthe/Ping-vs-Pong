@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title>Ping Pong</title>
+<!-- meta tags go here -->
+
+<!-- links go here -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -11,15 +14,23 @@
 	</header>
 
 	<section>
-   <!-- <canvas id='menuCanvas' width='720' height='400'></canvas> -->
+
+		<div id='scoreCanvas' class='fakecanvas'>
+			<div id='playerTwoScore' class='score playertwo'>0</div>
+			<div id='playerOneScore' class='score playerone'>0</div>
+		</div>
+
 		<canvas id='gameCanvas' width='720' height='400'></canvas>
-		<div id='menu' class='fakeCanvas'></div>
+		
+		<div id='menuCanvas' class='fakecanvas'>
+			<div id='twoPlayerButton' class='menubutton twoplayer'>2P</div>
+			<div id='onePlayerButton' class='menubutton oneplayer'>1P</div>
+		</div>
 	</section>
 
-	<div id='score' class='scoreboard'>	0 - 0 </div>
-
+<!-- scripts go here -->
 	<script type="text/javascript" src='node_modules/jquery/dist/jquery.min.js'></script>
 	<script type="text/javascript" src='game.js'></script>
-<!--<script type="text/javascript" src='menu.js'></script>-->
+	<script type="text/javascript" src='menu.js'></script>
 </body>
 </html>

@@ -4,47 +4,72 @@ body {
 	justify-content: flex-start;
 	align-items: center;
 }
-
+h1{
+	font-size: 36px;
+}
 section {
 	display:flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
-
 canvas {
-	background: red;
-	border: 2px solid black;
+ 	border: 2px solid black;
 	margin: 0;
 }
+div.fakecanvas {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 
-div.fakeCanvas {
-	background: blue;
+	background: white;
 	border: 2px solid black;
 	margin: 0;
 	width: 720px;
 	height: 400px;
-	position: absolute;
-
 }
 
-div.scoreboard {
-	background: green;
+div.menubutton {
+	flex-grow: 0.5;
 	text-align: center;
+	vertical-align: middle;
+	line-height: 400px;
+/* font-family: ; */
+	font-size: 40px;
+	color: black;
+}
+div.twoplayer:hover {
+	background: pink;
+}
+div.oneplayer:hover {
+	background: lightblue;
 }
 
-.hidden {
-	display: none;
+div.score {
+/* 	flex-grow: 0.25; */
+	justify-content: space-between;
+	vertical-align: middle;
+	line-height: 400px;
+/* font-family: ; */
+	font-size: 180px;
+}
+div.score.playertwo {
+	width: 310px;
+	text-align: right;
+	color: rgba(255,0,0,.2);
+}
+div.score.playerone{
+	width: 310px;
+	text-align: left;
+	color: rgba(0,0,255,.2);
 }
 
-/*
-#menuCanvas {
-}*/
-
+#scoreCanvas {
+	position:  static;
+}
 #gameCanvas {
-	
+	position: absolute;
 }
-
-#score {
-	font-size: 36px;
-	font-weight: 900;
+#menuCanvas {
+	position:  absolute;
 }
