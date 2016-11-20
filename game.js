@@ -15,6 +15,8 @@ function startApp(){
 
 function restartGame(){
 	spawnBall(6);
+	centerBall();
+	setTimeout(spawnBall, 2200, 6);
 	spawnPlayerOne();
 	spawnPlayerTwo();
 	updateScore();
@@ -38,7 +40,7 @@ function frameUpdate(timeStamp){
 }
 
 function drawScene(){
-	app.context.fillStyle="white";
+	app.context.fillStyle="transparent";
 	app.context.fillRect(0,0,app.canvas.width,app.canvas.height);
 
 	// app.context.moveTo(app.canvas.width/2, 0);  	//test middle line
@@ -77,7 +79,8 @@ function bounceWall(){
 }
 
 function updateScore(){
-	document.getElementById('score').innerHTML = (app.playerTwo.score + ' - ' + app.playerOne.score);
+	$('#playerOneScore').html(app.playerOne.score);
+	$('#playerTwoScore').html(app.playerTwo.score);
 }
 function centerBall(){
 	app.ball.position.x = app.canvas.width / 2;
@@ -87,9 +90,6 @@ function centerBall(){
 	app.ball.curve = 'straight';
 }
 function bouncePaddle(){
-	let distFromP1Center = (app.ball.position.y - app.playerOne.position.y);
-	let distFromP2Center = (app.ball.position.y - app.playerTwo.position.y);
-
 // ball hits top half of P1 -> curve down
 	if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.size.width / 2 &&
 	   app.ball.position.x + app.ball.radius > app.playerOne.position.x - app.playerOne.size.width / 2 &&

@@ -8,14 +8,13 @@ $('#twoPlayerButton').click(pickTwoPlayer);
 $('#onePlayerButton').click(pickOnePlayer);
 
 function pickOnePlayer(){
-	//make hidden
+	$('#menuCanvas').hide();
 	startApp();
 }
 
 function pickTwoPlayer(){
-	$('.fakeCanvas').children().hide();
-	$('.fakeCanvas').hide();
-	setTimeout(startApp, 1000);
+	$('#menuCanvas').hide();
+	startApp();
 }
 
 // function startMenu(){
