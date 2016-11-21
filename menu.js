@@ -1,24 +1,56 @@
-//click 1p or 2p
+// start app functions click 1p or 2p
 $('#twoPlayerButton').click(pickTwoPlayer);
 $('#onePlayerButton').click(pickOnePlayer);
 function pickOnePlayer(){
 	$('#menuCanvas').hide();
-	startApp();
+	restartGame();
 	startAI();
 }
 function pickTwoPlayer(){
 	$('#menuCanvas').hide();
-	startApp();
+	restartGame();
 }
 
+$('#newGameButton').click(function(){
+	endGame();
+});
 
-function playSound(soundID) {
-    var mySound=document.getElementById(soundID);
-    mySound.play();
-}
+// sounds for open or close menu modal
+$('#menuButton').mouseenter(function() {
+	playSound('menuHoverSound');
+});
+$('#menuButton').click(function() {
+	$('div.modal').toggle();
+	if ($('#menuButton').text().toLowerCase() == "menu"){
+		$('#menuButton').text("Close");
+		playSound('menuClickSound');
+	}
+	else {
+		$('#menuButton').text("Menu");
+		playSound('scoreSound');
+	}
+});
 
-function stopSound(soundID) {
-    var mySound=document.getElementById(soundID);
-    mySound.pause();
-    mySound.currentTime = 0;
-}
+// sounds for mute or unmute bg music
+$('#muteButton').mouseenter(function() {
+	playSound('menuHoverSound');
+});
+$('#muteButton').click(function() {
+	stopSound('backgroundMusic');
+	if ($('#muteButton').text().toLowerCase() == "mute"){
+		$('#muteButton').text("Unmute");
+		playSound('menuClickSound');
+	}
+	else {
+		$('#muteButton').text("Mute");
+		playSound('scoreSound');
+	}
+});
+
+// menu hover and click sounds.
+$('.hoverbutton').mouseenter(function() {
+	playSound('menuHoverSound');
+});
+$('.hoverbutton').click(function() {
+	playSound('menuClickSound');
+});

@@ -1,7 +1,11 @@
+$(document).ready(function(){
+	console.log("Document ready->game.js launched")
+	startApp();
+})
+
 let app = {};
 
 function startApp(){
-	// app.canvas = document.getElementById('gameCanvas');
 	app.canvas = $('#gameCanvas')[0];
 	app.canvas.focus();
 	app.context = app.canvas.getContext('2d');
@@ -10,10 +14,17 @@ function startApp(){
 
 	app.canvas.addEventListener('keydown', myKeyDown, false);
 	app.canvas.addEventListener('keyup', myKeyUp, false);
-	// $(window).on('keydown', myKeyDown);
-	// $(window).on('keyup', myKeyUp);
 
-	restartGame();
+	//starts game in a "paused" state on each New Game.
+	endGame();
+}
+function endGame(){
+	spawnBall();
+	centerBall();
+	spawnPlayerOne();
+	spawnPlayerTwo();
+	updateScore();
+	$('#menuCanvas').show();
 }
 
 //this current AI is just temporary. it "cheats" and is perfect
@@ -60,6 +71,18 @@ function drawScene(){
 	app.playerOne.drawMe(app.context);
 	app.playerTwo.drawMe(app.context);
 }
+
+function playSound(soundID){
+    var mySound = document.getElementById(soundID);
+    mySound.play();
+}
+
+function stopSound(soundID){
+    var mySound = document.getElementById(soundID);
+    mySound.pause();
+    mySound.currentTime = 0;
+}
+
 
 function bounceWall(){
 // ball hits top or bottom wall -> bounce
@@ -164,17 +187,6 @@ function calculateNewCurve(curveUpOrDown, playerPositionY){
 	app.ball.curve = curveUpOrDown;
 }
 
-function playSound(soundID) {
-    var mySound=document.getElementById(soundID);
-    mySound.play();
-}
-
-function stopSound(soundID) {
-    var mySound=document.getElementById(soundID);
-    mySound.pause();
-    mySound.currentTime = 0;
-}
-
 function spawnBall(oneOrNegOne){
 	app.ball = {
 		position: {
@@ -273,34 +285,15 @@ function drawPaddle(context, obj) {
 function drawBall(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
-
     context.fillStyle = obj.color;
     context.fill();
-
     context.strokeStyle = obj.color;
     context.stroke();
     context.beginPath();
     context.arc(0, 0, obj.radius, 0, (2 * Math.PI));
     
     context.restore();
-
-    // context.save();
-    // context.translate(obj.position.x, obj.position.y);
-
-    // context.fillStyle = 'yellow';
-
-    // // context.strokeStyle = obj.color;
-    // // context.stroke();
-    // context.beginPath();
-    // context.arc(0, 0, obj.radius, 0, (2 * Math.PI), false);
-    // context.closePath();
-    // context.fill();
-
-    // context.restore();
 }
-
-
-
 
 function myKeyDown(e){
 	// e.preventDefault();

@@ -10,22 +10,32 @@
 </head>
 
 <body>
-
 <!-- mute button AND menu modal button -->
 	<header class="menubar">
-		<div id="muteButton">Mute</div>
+		<div id="muteButton")">Mute</div>
 		<div id="menuButton" class="modalbutton">Menu</div>
 	</header>
 
 <!-- modal message/instructions -->
 		<div class="modal">
-			<div class="modalmessage"><span class="close">x</span>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div class="modalcontent">
+				<div id="newGameButton" class="newgame hoverbutton"><h2>New Game</h2></div>
+
+				<div class="controls">
+					<p>Player 1</p>
+					<img class="keyImage" src="images/up.png" alt="up">
+					<img class="keyImage" src="images/down.png" alt="down">
+				</div>
+				<div class="controls">
+					<p>Player 2</p>
+					<img class="keyImage" src="images/w.png" alt="w">
+					<img class="keyImage" src="images/s.png" alt="s">
+				</div>
+
+
+				<p>Created by: Kenneth Lin</p>
+				<p>Check it out on <a href="https://github.com/Kenworthe/Ping-vs-Pong">GitHub</a>!</p>
+			</div>
 		</div>
 
 	<h1>Ping<span> VS. </span>Pong</h1>
@@ -42,13 +52,11 @@
 
 		<!-- front layer: menu (absolute) -->
 		<div id="menuCanvas" class="fakecanvas">
-			<div id="twoPlayerButton" class="menubutton twoplayer" 
-			onmouseenter="playSound('menuHoverSound')" 
-			onmousedown="playSound('menuClickSound')">2P</div>
+			<div id="twoPlayerButton" class="choosemode hoverbutton twoplayer" 
+			>2P</div>
 
-			<div id="onePlayerButton" class="menubutton oneplayer" 
-			onmouseenter="playSound('menuHoverSound')" 
-			onmousedown="playSound('menuClickSound')">1P</div>
+			<div id="onePlayerButton" class="choosemode hoverbutton oneplayer" 
+			>1P</div>
 		</div>
 	</section>
 
@@ -63,6 +71,7 @@
 	<audio id="wallSound" src="sounds/sfx_sounds_Blip11.wav" preload="auto"></audio>
 	<audio id="playerOneSound" src="sounds/sfx_sounds_Blip9.wav" preload="auto"></audio>
 	<audio id="playerTwoSound" src="sounds/sfx_sounds_Blip7.wav" preload="auto"></audio>
+	<audio id="backgroundMusic" src="backgroundmusic.mp3" volume="0.5" autoplay="autoplay"></audio>
 
 </body>
 </html>
