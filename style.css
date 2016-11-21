@@ -1,16 +1,42 @@
+@font-face {
+	font-family: Lazer84;
+	src: url('fonts/lazer84.ttf');
+}
+@font-face {
+	font-family: AlienEncounters;
+	src: url('fonts/SFAlienEncounters.ttf');
+}
+@font-face {
+	font-family: PressStart;
+	src: url('fonts/PressStart2P.ttf');
+}
+
 body {
 	background: #0f0f0f;
+	background-image: url('images/80s-bg-2.jpg');
+	background-position:  center;
+	background-size: auto;
+	background-repeat: no-repeat;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 }
+
+header {
+	margin: 15px auto;
+}
 h1{
 	font-size: 86px;
 	margin: 0;
-	font-family: Arial;
-	color: #12DDB9;
+	font-family: AlienEncounters;
+	color: white;
 }
+h1 span {
+	font-family: Lazer84;
+	color: #EB00AF;
+}
+
 section {
 	display: flex;
 	flex-direction: column;
@@ -31,7 +57,7 @@ div.fakecanvas {
 	justify-content: space-between;
 	align-items: center;
 
-	background: #0f0f0f;  /* almost black (rgba(15,15,15,.2))*/
+	background: rgba(15,15,15,.9); /* #0f0f0f; */
 	border: 2px solid #DDDDE5;
 	margin: 0;
 	width: 720px;
@@ -43,7 +69,7 @@ div.menubutton {
 	text-align: center;
 	vertical-align: middle;
 	line-height: 400px;
-/* font-family: ; */
+	font-family: PressStart, Arial;
 	font-size: 72px;
 	color: #DDDDE5;
 }
@@ -67,8 +93,8 @@ div.score {
 	justify-content: space-between;
 	vertical-align: middle;
 	line-height: 400px;
-/* font-family: ; */
-	font-size: 180px;
+	font-family: PressStart;
+	font-size: 120px;
 }
 div.score.playertwo {
 	width: 310px;
