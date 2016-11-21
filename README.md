@@ -49,6 +49,7 @@ Player 2: W, S
 * https://developer.mozilla.org/en-US/docs/Games/Anatomy
 * https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 * http://www.w3schools.com/graphics/game_intro.asp
+* http://www.gameplaypassion.com/blog/how-to-handle-keyboard-input-like-a-boss-mootools/
 
 *************************
 ## Notes: 
@@ -71,7 +72,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
 1. If ball.speed is too high, it will not collide with paddle and go through it. Caused by framerate OR poor hitbox detection. Potential fix: adjust hitboxes OR add raycasting.
 
-2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge.
+2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge. 
+
+3. KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. Need to find better solution using FOCUS.
 
 ***************************
 ### ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 

@@ -1,11 +1,15 @@
 body {
+	background: #0f0f0f;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 }
 h1{
-	font-size: 36px;
+	font-size: 86px;
+	margin: 0;
+	font-family: Arial;
+	color: #12DDB9;
 }
 section {
 	display:flex;
@@ -13,8 +17,9 @@ section {
 	justify-content: flex-start;
 }
 canvas {
- 	border: 2px solid black;
+ 	border: 2px solid #DDDDE5;
 	margin: 0;
+	outline-width: 0;
 }
 div.fakecanvas {
 	display: flex;
@@ -22,8 +27,8 @@ div.fakecanvas {
 	justify-content: space-between;
 	align-items: center;
 
-	background: white;
-	border: 2px solid black;
+	background: #0f0f0f;  /* almost black */
+	border: 2px solid #DDDDE5;
 	margin: 0;
 	width: 720px;
 	height: 400px;
@@ -35,14 +40,22 @@ div.menubutton {
 	vertical-align: middle;
 	line-height: 400px;
 /* font-family: ; */
-	font-size: 40px;
-	color: black;
+	font-size: 72px;
+	color: #DDDDE5;
+}
+div.twoplayer {
+	color: #DDDDE5;
+	background: #EB00AF;
+}
+div.oneplayer {
+	color: #DDDDE5;
+	background: #29D7FE;
 }
 div.twoplayer:hover {
-	background: pink;
+	background: #9e0077;
 }
 div.oneplayer:hover {
-	background: lightblue;
+	background: #01a2c6;
 }
 
 div.score {
@@ -56,12 +69,12 @@ div.score {
 div.score.playertwo {
 	width: 310px;
 	text-align: right;
-	color: rgba(255,0,0,.2);
+	color: rgba(255, 0, 175, .4);
 }
 div.score.playerone{
 	width: 310px;
 	text-align: left;
-	color: rgba(0,0,255,.2);
+	color: rgba(41, 215, 254, .4);
 }
 
 #scoreCanvas {

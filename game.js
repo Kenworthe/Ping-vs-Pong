@@ -2,13 +2,16 @@ let app = {};
 
 function startApp(){
 	app.canvas = document.getElementById('gameCanvas');
+	app.canvas.focus();
+	// app.canvas = $('#gameCanvas')[0];
 	app.context = app.canvas.getContext('2d');
 	app.lastTime = window.performance.now();
 	window.requestAnimationFrame(frameUpdate);
 
-	window.addEventListener('keydown', myKeyDown, false);
-	window.addEventListener('keyup', myKeyUp, false);
-	// window.addEventListener('click', mouseDown, false);
+	app.canvas.addEventListener('keydown', myKeyDown, false);
+	app.canvas.addEventListener('keyup', myKeyUp, false);
+	// $(window).on('keydown', myKeyDown);
+	// $(window).on('keyup', myKeyUp);
 
 	restartGame();
 }
@@ -162,7 +165,7 @@ function spawnBall(initialSpeed){
 		curve: 'straight',
 		multiplier: 1,   //not in use due to bug when app.ball.speed.x > 9
 		radius: 5,
-		color: '#000000',
+		color: '#FFFFFF',
 		drawMe: function(context){
 			drawBall(context, this);
 		},
@@ -190,7 +193,7 @@ function spawnPlayerOne(){
 			width: 8,
 			height: 80
 		},
-		color: '#0000FF',
+		color: '#29D7FE',
 		drawMe: function(context){
 			drawPaddle(context, this);
 		},
@@ -216,7 +219,7 @@ function spawnPlayerTwo(){
 			width: 8,
 			height: 80
 		},
-		color: '#FF0000',
+		color: '#EB00AF',
 		drawMe: function(context){
 			drawPaddle(context, this);
 		},
@@ -245,22 +248,25 @@ function drawBall(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
     context.fillStyle = obj.color;
+    context.fill();
+    context.strokeStyle = obj.color;
     context.stroke();
     context.beginPath();
     context.arc(0, 0, obj.radius, 0, (2 * Math.PI));
-    // context.fill();
     context.restore();
 }
 
 
 function myKeyDown(e){
+	// e.preventDefault();
 	if (e.keyCode === 38){
+		e.preventDefault();
 		playerOnePressUp();
 	}
 	else if (e.keyCode === 40){
+		e.preventDefault();
 		playerOnePressDown();
 	}
-//add playerOne LEFT and RIGHT input
 
 	else if (e.keyCode === 87){
 		playerTwoPressUp();
