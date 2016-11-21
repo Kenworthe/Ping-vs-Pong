@@ -67,6 +67,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 - Need to add sounds. If I include bg music, should also include mute toggle.
 - Put entirety of app in single canvas? Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM.
 
+- adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
+
 *************************
 **Known Bugs:** 
 

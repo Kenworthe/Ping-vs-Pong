@@ -14,59 +14,30 @@
 	</header>
 
 	<section>
-
+		<!-- back layer: score (static) -->
 		<div id='scoreCanvas' class='fakecanvas'>
 			<div id='playerTwoScore' class='score playertwo'>0</div>
 			<div id='playerOneScore' class='score playerone'>0</div>
 		</div>
 
+		<!-- middle layer: game canvas (absolute)-->
 		<canvas id='gameCanvas' width='720' height='400' tabindex="0"></canvas>
-		
+
+		<!-- front layer: menu (absolute) -->
 		<div id='menuCanvas' class='fakecanvas'>
 			<div id='twoPlayerButton' class='menubutton twoplayer'>2P</div>
 			<div id='onePlayerButton' class='menubutton oneplayer'>1P</div>
 		</div>
 	</section>
 
-<section>
-	<p style="color:white">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-
-	<p style="color:white">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-
-	<p style="color:white">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
-
-	<p style="color:white">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+	<section>
+		<div class='controls'>Controls
+			<div>How To Play</div>
+			
+		</div>
+	</section>
 
 
-</section>
 <!-- scripts go here -->
 	<script type="text/javascript" src='node_modules/jquery/dist/jquery.min.js'></script>
 	<script type="text/javascript" src='game.js'></script>

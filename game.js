@@ -1,9 +1,9 @@
 let app = {};
 
 function startApp(){
-	app.canvas = document.getElementById('gameCanvas');
+	// app.canvas = document.getElementById('gameCanvas');
+	app.canvas = $('#gameCanvas')[0];
 	app.canvas.focus();
-	// app.canvas = $('#gameCanvas')[0];
 	app.context = app.canvas.getContext('2d');
 	app.lastTime = window.performance.now();
 	window.requestAnimationFrame(frameUpdate);
@@ -17,9 +17,9 @@ function startApp(){
 }
 
 function restartGame(){
-	spawnBall(6);
+	spawnBall(1);
 	centerBall();
-	setTimeout(spawnBall, 2200, 6);
+	setTimeout(spawnBall, 2200, 1);
 	spawnPlayerOne();
 	spawnPlayerTwo();
 	updateScore();
@@ -37,18 +37,17 @@ function frameUpdate(timeStamp){
 	app.ball.move();
 	app.playerOne.move();
 	app.playerTwo.move();
-	app.context.clearRect(0, 0, app.canvas.width, app.canvas.height);
 
+	app.context.clearRect(0, 0, app.canvas.width, app.canvas.height);
 	drawScene();
 }
 
 function drawScene(){
 	app.context.fillStyle="transparent";
-	app.context.fillRect(0,0,app.canvas.width,app.canvas.height);
+	app.context.fillRect(0,0, app.canvas.width, app.canvas.height);
 
-	// app.context.moveTo(app.canvas.width/2, 0);  	//test middle line
-	// app.context.lineTo(app.canvas.width/2, app.canvas.height);  	//test middle line
-	// app.context.stroke();  	//test middle line
+	// app.context.fillStyle="rgba(0,0,0,.1)";
+	// app.context.fillRect(0,0,app.canvas.width,app.canvas.height); //add ball trail
 
 	app.ball.drawMe(app.context);
 	app.playerOne.drawMe(app.context);
@@ -70,14 +69,14 @@ function bounceWall(){
 		centerBall();
 		app.playerTwo.score += 1;
 		updateScore();
-		setTimeout(spawnBall, 1000, -6);
+		setTimeout(spawnBall, 1000, -1);
 	}
 // ball hits left wall -> P1 scores, serve to P1
 	if (app.ball.position.x <= app.ball.radius){
 		centerBall();
 		app.playerOne.score += 1;
 		updateScore();
-		setTimeout(spawnBall, 1000, 6);
+		setTimeout(spawnBall, 1000, 1);
 	}
 }
 
@@ -150,16 +149,16 @@ function calculateNewCurve(curveUpOrDown, playerPositionY){
 	app.ball.curve = curveUpOrDown;
 }
 
-function spawnBall(initialSpeed){
+function spawnBall(oneOrNegOne){
 	app.ball = {
 		position: {
 			x: app.canvas.width / 2,
 			y: app.canvas.height / 2
 		},
 		speed: {
-			max: 8.25,
-			base: 6,
-			x: initialSpeed,   //recommend 6-9
+			max: 8.25, //cannot surpass 9
+			base: 5,
+			x: oneOrNegOne * 5,   //recommend base speed 4-6
 			y: (Math.random() * 2) - 1
 		},
 		curve: 'straight',
@@ -198,10 +197,10 @@ function spawnPlayerOne(){
 			drawPaddle(context, this);
 		},
 		move : function(){
-			if(this.moveUp && this.position.y > app.playerOne.size.height / 2){   //52
+			if(this.moveUp && this.position.y > app.playerOne.size.height / 2){
 				this.position.y -= 8;
 			}
-			if(this.moveDown && this.position.y < app.canvas.height - (app.playerOne.size.height / 2) ){     //352
+			if(this.moveDown && this.position.y < app.canvas.height - (app.playerOne.size.height / 2) ){
 				this.position.y += 8;
 			}
 		}
@@ -247,14 +246,33 @@ function drawPaddle(context, obj) {
 function drawBall(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
+
     context.fillStyle = obj.color;
     context.fill();
+
     context.strokeStyle = obj.color;
     context.stroke();
     context.beginPath();
     context.arc(0, 0, obj.radius, 0, (2 * Math.PI));
+    
     context.restore();
+
+    // context.save();
+    // context.translate(obj.position.x, obj.position.y);
+
+    // context.fillStyle = 'yellow';
+
+    // // context.strokeStyle = obj.color;
+    // // context.stroke();
+    // context.beginPath();
+    // context.arc(0, 0, obj.radius, 0, (2 * Math.PI), false);
+    // context.closePath();
+    // context.fill();
+
+    // context.restore();
 }
+
+
 
 
 function myKeyDown(e){

@@ -12,7 +12,7 @@ h1{
 	color: #12DDB9;
 }
 section {
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
@@ -21,17 +21,21 @@ canvas {
 	margin: 0;
 	outline-width: 0;
 }
+div {
+	color: #DDDDE5;
+}
+
 div.fakecanvas {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 
-	background: #0f0f0f;  /* almost black */
+	background: #0f0f0f;  /* almost black (rgba(15,15,15,.2))*/
 	border: 2px solid #DDDDE5;
 	margin: 0;
 	width: 720px;
-	height: 400px;
+	height: auto;
 }
 
 div.menubutton {
@@ -75,6 +79,21 @@ div.score.playerone{
 	width: 310px;
 	text-align: left;
 	color: rgba(41, 215, 254, .4);
+}
+
+div.controls {
+	margin: 15px auto;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	background: #0f0f0f;  /* almost black (rgba(15,15,15,.2))*/
+	border: 2px solid #DDDDE5;
+
+	width: 720px;
+	height: auto;
 }
 
 #scoreCanvas {
