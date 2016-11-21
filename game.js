@@ -16,6 +16,13 @@ function startApp(){
 	restartGame();
 }
 
+//this current AI is just temporary. it "cheats" and is perfect
+function startAI(){
+	app.playerTwo.move = function(){
+	this.position.y = app.ball.position.y;
+	}
+}
+
 function restartGame(){
 	spawnBall(1);
 	centerBall();
@@ -59,13 +66,16 @@ function bounceWall(){
 	if (app.ball.position.y >= (app.canvas.height - app.ball.radius)){
 		app.ball.position.y = (app.canvas.height - app.ball.radius - 1);
 		app.ball.speed.y = -(app.ball.speed.y);
+		playSound('wallSound');
 	}
 	if (app.ball.position.y <= app.ball.radius){
 		app.ball.position.y = (app.ball.radius + 1);
 		app.ball.speed.y = -(app.ball.speed.y);
+		playSound('wallSound');
 	}
 // ball hits right wall -> P2 scores, serve to P2
 	if (app.ball.position.x >= (app.canvas.width - app.ball.radius)){
+		playSound('scoreSound');
 		centerBall();
 		app.playerTwo.score += 1;
 		updateScore();
@@ -73,6 +83,7 @@ function bounceWall(){
 	}
 // ball hits left wall -> P1 scores, serve to P1
 	if (app.ball.position.x <= app.ball.radius){
+		playSound('scoreSound');
 		centerBall();
 		app.playerOne.score += 1;
 		updateScore();
@@ -102,7 +113,8 @@ function bouncePaddle(){
 		// increase/decrease angle based on ball distance from center paddle.
 		// apply downward curve if ball hits upper half of paddle.
 		calculateNewSpeed(app.ball.speed.x);
-		calculateNewCurve('down', app.playerOne.position.y);  //testing
+		calculateNewCurve('down', app.playerOne.position.y);
+		playSound('playerOneSound');
 	}
 // ball hits bottom half of P1 -> curve up
 	if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.size.width / 2 &&
@@ -112,6 +124,7 @@ function bouncePaddle(){
 	{
 		calculateNewSpeed(app.ball.speed.x);
 		calculateNewCurve('up', app.playerOne.position.y);
+		playSound('playerOneSound');
 	}
 // ball hits top half of P2 -> curve down
 	if(app.ball.position.x - app.ball.radius > app.playerTwo.position.x - app.playerTwo.size.width / 2 &&
@@ -121,6 +134,7 @@ function bouncePaddle(){
 	{
 		calculateNewSpeed(app.ball.speed.x);
 		calculateNewCurve('down', app.playerTwo.position.y);
+		playSound('playerTwoSound');
 	}
 // ball hits bottom half of P2 -> curve up
 	if(app.ball.position.x - app.ball.radius > app.playerTwo.position.x - app.playerTwo.size.width / 2 &&
@@ -129,7 +143,8 @@ function bouncePaddle(){
 	   app.ball.position.y >= app.playerTwo.position.y)
 	{
 		calculateNewSpeed(app.ball.speed.x);
-		calculateNewCurve('up', app.playerTwo.position.y)
+		calculateNewCurve('up', app.playerTwo.position.y);
+		playSound('playerTwoSound');
 	}
 }
 
@@ -147,6 +162,17 @@ function calculateNewCurve(curveUpOrDown, playerPositionY){
 	let distFromCenter = (app.ball.position.y - playerPositionY);
 	app.ball.speed.y = (distFromCenter * 0.15);
 	app.ball.curve = curveUpOrDown;
+}
+
+function playSound(soundID) {
+    var mySound=document.getElementById(soundID);
+    mySound.play();
+}
+
+function stopSound(soundID) {
+    var mySound=document.getElementById(soundID);
+    mySound.pause();
+    mySound.currentTime = 0;
 }
 
 function spawnBall(oneOrNegOne){
@@ -223,6 +249,7 @@ function spawnPlayerTwo(){
 			drawPaddle(context, this);
 		},
 		move : function(){
+			// if AI is active, change this function.
 			// this.position.y = app.ball.position.y; //for AI use.
 			if(this.moveUp && this.position.y > app.playerTwo.size.height / 2){
 				this.position.y -= 8;

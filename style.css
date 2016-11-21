@@ -2,33 +2,67 @@
 	font-family: Lazer84;
 	src: url('fonts/lazer84.ttf');
 }
+/* https://www.behance.net/gallery/31261857/LAZER-84-Free-Font */
 @font-face {
 	font-family: AlienEncounters;
 	src: url('fonts/SFAlienEncounters.ttf');
 }
-@font-face {
-	font-family: PressStart;
-	src: url('fonts/PressStart2P.ttf');
-}
+/* http://www.dafont.com/alien-encounters.font */
 
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
 	background: #0f0f0f;
 	background-image: url('images/80s-bg-2.jpg');
 	background-position:  center;
 	background-size: auto;
 	background-repeat: no-repeat;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-}
+/* 	animation: saturator 400ms infinite; */
+  }
+
+/* @keyframes saturator {
+  0%, 100%  { -webkit-filter: saturate(200%); }
+  50% { -webkit-filter: saturate(60%); }
+} */
 
 header {
-	margin: 15px auto;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
+	font-family: 'Press Start 2P', sans-serif;
 }
+header div:hover{
+	color: #EB00AF;
+}
+
+/* modal button and popup. */
+.modal {
+	display: none;
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 720px; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
 h1{
-	font-size: 86px;
-	margin: 0;
+	margin: 15px auto;
+	font-size: 84px;
 	font-family: AlienEncounters;
 	color: white;
 }
@@ -51,63 +85,63 @@ div {
 	color: #DDDDE5;
 }
 
-div.fakecanvas {
+.fakecanvas {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 
-	background: rgba(15,15,15,.9); /* #0f0f0f; */
+	background: rgba(15,15,15,.85); /* #0f0f0f; */
 	border: 2px solid #DDDDE5;
 	margin: 0;
 	width: 720px;
 	height: auto;
 }
 
-div.menubutton {
+.menubutton {
 	flex-grow: 0.5;
 	text-align: center;
 	vertical-align: middle;
 	line-height: 400px;
-	font-family: PressStart, Arial;
+	font-family: 'Press Start 2P', Arial;
 	font-size: 72px;
 	color: #DDDDE5;
 }
-div.twoplayer {
+.twoplayer {
 	color: #DDDDE5;
 	background: #EB00AF;
 }
-div.oneplayer {
+.oneplayer {
 	color: #DDDDE5;
 	background: #29D7FE;
 }
-div.twoplayer:hover {
+.twoplayer:hover {
 	background: #9e0077;
 }
-div.oneplayer:hover {
+.oneplayer:hover {
 	background: #01a2c6;
 }
 
-div.score {
+.score {
 /* 	flex-grow: 0.25; */
 	justify-content: space-between;
 	vertical-align: middle;
 	line-height: 400px;
-	font-family: PressStart;
+	font-family: 'Press Start 2P';
 	font-size: 120px;
 }
-div.score.playertwo {
+.score.playertwo {
 	width: 310px;
 	text-align: right;
 	color: rgba(255, 0, 175, .4);
 }
-div.score.playerone{
+.score.playerone{
 	width: 310px;
 	text-align: left;
 	color: rgba(41, 215, 254, .4);
 }
 
-div.controls {
+.controls {
 	margin: 15px auto;
 
 	display: flex;
