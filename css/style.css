@@ -1,6 +1,6 @@
 @font-face {
 	font-family: Lazer84;
-	src: url('../fonts/Lazer84.ttf');
+	src: url('../fonts/Lazer84.ttf') format('opentype');
 }
 /* https://www.behance.net/gallery/31261857/LAZER-84-Free-Font */
 @font-face {
@@ -149,7 +149,7 @@ h1{
 	color: white;
 }
 h1 span {
-	font-family: Lazer84;
+	font-family: Lazer84 'Press Start 2P' Arial;
 	color: #EB00AF;
 }
 
