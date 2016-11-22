@@ -66,7 +66,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 - Curves supposed to mimick forehand/backhand swing by a table tennis player.
 - Need to add sounds. If I include bg music, should also include mute toggle.
 - Put entirety of app in single canvas? Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM.
-
+- music, sounds, fonts, and images are all open source.
 - adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
 
 *************************
@@ -76,7 +76,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
 2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge. 
 
-3. KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. Need to find better solution using FOCUS.
+3. **FIXED** KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. Need to find better solution using FOCUS. EDIT: Fixed by just attaching event handlers to app.canvas instead of window. Then gave app.canvas focus.
 
 ***************************
 ### ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
