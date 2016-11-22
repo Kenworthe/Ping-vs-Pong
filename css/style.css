@@ -1,11 +1,11 @@
 @font-face {
 	font-family: Lazer84;
-	src: url('fonts/lazer84.ttf');
+	src: url('../fonts/lazer84.ttf');
 }
 /* https://www.behance.net/gallery/31261857/LAZER-84-Free-Font */
 @font-face {
 	font-family: AlienEncounters;
-	src: url('fonts/SFAlienEncounters.ttf');
+	src: url('../fonts/SFAlienEncounters.ttf');
 }
 /* http://www.dafont.com/alien-encounters.font */
 
@@ -26,7 +26,7 @@ body {
 	min-height: 100%;
 
 	background: #310440;  /* #0f0f0f; */
-	background-image: url('images/80s-bg-2.jpg');
+	background-image: url('../images/80s-bg-2.jpg');
 	background-size: cover;
 	background-position:  center;
 	background-repeat: no-repeat;
@@ -113,8 +113,13 @@ h2 {
 	margin: 10px 0;
 	padding: 0;
 }
+p {
+	margin: 10px;
+	align-self: flex-end;
+}
 .newgame {
 	flex-grow: 0;
+	margin: 20px auto;
 }
 .newgame:hover{
 	color: #EB00AF;

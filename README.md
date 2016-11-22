@@ -78,6 +78,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 
 3. **FIXED** KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. Need to find better solution using FOCUS. EDIT: Fixed by just attaching event handlers to app.canvas instead of window. Then gave app.canvas focus.
 
+4. endGame() function will fail to prevent ball from moving if there is a setTimeout(spawnBall).  I tried using clearTimeout(spawnBall) but it didn't work.
+
 ***************************
 ### ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
 
