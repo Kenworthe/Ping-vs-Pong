@@ -4,11 +4,13 @@ $('#onePlayerButton').click(pickOnePlayer);
 
 function pickOnePlayer(){
 	$('#menuCanvas').hide();
+	$('#gameCanvas').focus();
 	restartGame();
 	startAI();
 }
 function pickTwoPlayer(){
 	$('#menuCanvas').hide();
+	$('#gameCanvas').focus();
 	restartGame();
 }
 

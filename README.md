@@ -49,7 +49,7 @@ Player 2: W, S
 * https://developer.mozilla.org/en-US/docs/Games/Anatomy
 * https://developer.mozilla.org/en-US/docs/Web/API/Performance/
 * http://www.w3schools.com/graphics/game_intro.asp
-* http://www.gameplaypassion.com/blog/how-to-handle-keyboard-input-like-a-boss-mootools/
+* http://opengameart.org/
 
 *************************
 ## Notes: 
