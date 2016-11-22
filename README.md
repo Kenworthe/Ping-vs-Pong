@@ -2,6 +2,8 @@
 **By: Kenneth Lin**
 ***********************
 
+![](https://firebasestorage.googleapis.com/v0/b/ping-vs-pong.appspot.com/o/Screen%20Shot%202016-11-22%20at%2012.39.26%20PM.png?alt=media&token=c90af297-0be5-463e-8ceb-ce15eb4f4838) 
+
 ## Overview: 
 
 Pong with curves! For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
@@ -10,7 +12,7 @@ The ball will curve up or down at different velocities depending on how you hit 
 
 **Play it here:** 
 
-(URL)
+https://ping-vs-pong.firebaseapp.com/
 
 ## Controls: 
 
@@ -25,7 +27,8 @@ Player 2: W, S
 * So many curves!
 * 60 FPS!
 * No friends? No problem! Play vs. AI!
-* Action! Excitement!! Explosions!!! (no not really..)
+* 8-bit sounds and music!
+* Literally minutes of fun! 
 
 ## Technologies Used: 
 
@@ -37,7 +40,7 @@ Player 2: W, S
 **Libraries:** 
 * jQuery
 
-**Website Hosting:** 
+**Hosting:** 
 * Firebase
 
 **Tools:** 
@@ -54,33 +57,29 @@ Player 2: W, S
 *************************
 ## Notes: 
 
-- Explanation of why I chose window.performance.now();
-https://developer.mozilla.org/en-US/docs/Web/API/Performance/
-
-- Adding paddle UP/DOWN movement was easy.
-- Adding wall bounce logic was easy.
+- Adding paddle UP/DOWN inputs was easy.
+- Hitbox detection was hard.
+- Current AI is impossible: it "cheats" because paddle.pos.y = ball.pos.y; need to make it abide by default movement.
 - Need to add paddle upper-half & lower-half collision animation.
 - Not sure how to implement paddle LEFT/RIGHT action.
-- Collision detection: "too precise to collide" try using hitbox or ray-casting
 - Added curve by changing the speed of y (rate of change).
 - Curves supposed to mimick forehand/backhand swing by a table tennis player.
-- Need to add sounds. If I include bg music, should also include mute toggle.
-- Put entirety of app in single canvas? Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM.
-- music, sounds, fonts, and images are all open source.
-- adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
+- Want to put entirety of app in single canvas... Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM. (which I did).
+- Music, sounds, fonts, and images are all open source.
+- Adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
 
 *************************
 **Known Bugs:** 
 
-1. If ball.speed is too high, it will not collide with paddle and go through it. Caused by framerate OR poor hitbox detection. Potential fix: adjust hitboxes OR add raycasting.
+1. If ball.speed is too high, it will not collide with paddle, and instead go through it. Caused by framerate OR poor hitbox detection being "too precise". Potential fix: adjust hitboxes OR add raycasting. Current bandaid: adjusted hitboxes and capped ball speed.
 
 2. **FIXED** If ball collides with top/bottom wall at certain angle, it will get 'stuck' in the wall. Fixed by checking if ball.position.y is beyond top/bottom wall. If it is, then 'nudge' ball.position.y a few pixels within than top/bottom edge. 
 
-3. **FIXED** KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. Need to find better solution using FOCUS. EDIT: Fixed by just attaching event handlers to app.canvas instead of window. Then gave app.canvas focus.
+3. **FIXED** KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. EDIT: Fixed by just attaching event handlers to app.canvas instead of window. And abundant use of  app.canvas focus().
 
 4. endGame() function will fail to prevent ball from moving if there is a setTimeout(spawnBall).  I tried using clearTimeout(spawnBall) but it didn't work.
 
 ***************************
-### ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
+![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
 
-Project 1 - Submitted by Kenneth Lin on MM:DD:YYYY.
+GA WDI Project 1 - Submitted by Kenneth Lin on 11-22-2016.
