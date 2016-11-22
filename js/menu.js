@@ -31,10 +31,12 @@ $('#menuButton').click(function() {
 	$('div.modal').toggle();
 	if ($('#menuButton').text().toLowerCase() == "menu"){
 		$('#menuButton').text("Close");
+		$('#gameCanvas').focus();
 		playSound('menuClickSound');
 	}
 	else {
 		$('#menuButton').text("Menu");
+		$('#gameCanvas').focus();
 		playSound('scoreSound');
 	}
 });
@@ -46,11 +48,13 @@ $('#muteButton').mouseenter(function() {
 $('#muteButton').click(function() {
 	if ($('#muteButton').text().toLowerCase() == "mute"){
 		$('#muteButton').text("Unmute");
+		$('#gameCanvas').focus();
 		playSound('menuClickSound');
 		stopSound('backgroundMusic');
 	}
 	else {
 		$('#muteButton').text("Mute");
+		$('#gameCanvas').focus();
 		playSound('scoreSound');
 		playSound('backgroundMusic');
 	}
