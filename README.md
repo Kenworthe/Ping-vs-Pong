@@ -54,6 +54,16 @@ Player 2: W, S
 * http://www.w3schools.com/graphics/game_intro.asp
 * http://opengameart.org/
 
+Font "Lazer84" by: Juan Hodgson (https://www.behance.net/gallery/31261857/LAZER-84-Free-Font)
+
+Font "Alien Encounters" by: ShyFonts (http://www.dafont.com/alien-encounters.font)
+
+Font "Press Start 2P" by: CodeMan38 (https://fonts.google.com/specimen/Press+Start+2P)
+
+Sound Effects by: SubSpaceAudio (http://opengameart.org/content/512-sound-effects-8-bit-style)
+
+Music by: Deceased Superior Technician (http://opengameart.org/content/railjet-long-seamless-loop)
+
 *************************
 ## Notes: 
 
@@ -65,7 +75,7 @@ Player 2: W, S
 - Added curve by changing the speed of y (rate of change).
 - Curves supposed to mimick forehand/backhand swing by a table tennis player.
 - Want to put entirety of app in single canvas... Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM. (which I did).
-- Music, sounds, fonts, and images are all open source.
+- Music, sounds, and fonts are all open source.
 - Adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
 
 *************************
