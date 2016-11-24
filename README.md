@@ -6,7 +6,9 @@
 
 ## Overview: 
 
-Pong with curves! For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
+Pong with curves! 
+
+For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
 
 The ball will curve up or down at different velocities depending on how you hit it with your paddle. This allows for some pretty crazy volleys once the speed picks up. Trick shots and mind games galore!
 
@@ -90,6 +92,4 @@ Music by: Deceased Superior Technician (http://opengameart.org/content/railjet-l
 4. endGame() function will fail to prevent ball from moving if there is a setTimeout(spawnBall).  I tried using clearTimeout(spawnBall) but it didn't work.
 
 ***************************
-![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) 
 
-GA WDI Project 1 - Submitted by Kenneth Lin on 11-22-2016.
