@@ -3,3 +3,4 @@ public/
 firebase.json
 database.rules.json
 .firebaserc
+firebase-debug.log
