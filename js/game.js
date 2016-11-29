@@ -15,9 +15,10 @@ function startApp(){
 	app.canvas.addEventListener('keydown', myKeyDown, false);
 	app.canvas.addEventListener('keyup', myKeyUp, false);
 
-	//starts game in a "paused" state on each New Game.
-	endGame();
+	endGame(); //starts game in a "paused" state
 }
+
+//resets and pauses game. then unhides menuCanvas.
 function endGame(){
 	spawnBall();
 	centerBall();
@@ -27,13 +28,21 @@ function endGame(){
 	$('#menuCanvas').show();
 }
 
-//this current AI is just temporary. it "cheats" and is perfect
+//this current AI is just temporary. It moves slightly slower than P1.
 function startAI(){
 	app.playerTwo.move = function(){
-	this.position.y = app.ball.position.y;
+		if (this.position.y > app.ball.position.y 
+			&& this.position.y > this.size.height / 2){
+			this.position.y -= 4;
+		}
+		if (this.position.y < app.ball.position.y
+			&& this.position.y < app.canvas.height - (this.size.height / 2)){
+			this.position.y += 4;
+		}
 	}
 }
 
+//resets positions and starts ball move after delay.
 function restartGame(){
 	spawnBall(1);
 	centerBall();
@@ -43,11 +52,11 @@ function restartGame(){
 	updateScore();
 }
 
+//main game loop.
 function frameUpdate(timeStamp){
 	window.requestAnimationFrame(frameUpdate);
 	var deltaTime = (timeStamp - app.lastTime) / 1000;
 	app.lastTime = timeStamp;
-	// console.log(1/deltaTime); // view framerate in console
 
 	bounceWall();
 	bouncePaddle();
@@ -60,6 +69,7 @@ function frameUpdate(timeStamp){
 	drawScene();
 }
 
+//draws all canvas objects
 function drawScene(){
 	app.context.fillStyle="transparent";
 	app.context.fillRect(0,0, app.canvas.width, app.canvas.height);
@@ -72,20 +82,19 @@ function drawScene(){
 	app.playerTwo.drawMe(app.context);
 }
 
+//play sound and pause sound functions
 function playSound(soundID){
     var mySound = document.getElementById(soundID);
     mySound.play();
 }
-
 function stopSound(soundID){
     var mySound = document.getElementById(soundID);
     mySound.pause();
     mySound.currentTime = 0;
 }
 
-
 function bounceWall(){
-// ball hits top or bottom wall -> bounce
+// ball hits top or bottom wall -> negate y speed
 	if (app.ball.position.y >= (app.canvas.height - app.ball.radius)){
 		app.ball.position.y = (app.canvas.height - app.ball.radius - 1);
 		app.ball.speed.y = -(app.ball.speed.y);
@@ -125,6 +134,7 @@ function centerBall(){
 	app.ball.speed.y = 0;
 	app.ball.curve = 'straight';
 }
+
 function bouncePaddle(){
 // ball hits top half of P1 -> curve down
 	if(app.ball.position.x + app.ball.radius < app.playerOne.position.x + app.playerOne.size.width / 2 &&
@@ -180,13 +190,13 @@ function calculateNewSpeed(currentSpeed){
 	}
 	app.ball.speed.x = -(currentSpeed);
 }
-
 function calculateNewCurve(curveUpOrDown, playerPositionY){
 	let distFromCenter = (app.ball.position.y - playerPositionY);
 	app.ball.speed.y = (distFromCenter * 0.15);
 	app.ball.curve = curveUpOrDown;
 }
 
+//constructor for ball
 function spawnBall(oneOrNegOne){
 	app.ball = {
 		position: {
@@ -219,6 +229,7 @@ function spawnBall(oneOrNegOne){
 	}
 }
 
+//constructor for P1
 function spawnPlayerOne(){
 	app.playerOne = {
 		score: 0,
@@ -245,6 +256,7 @@ function spawnPlayerOne(){
 	}
 }
 
+//constructor for P2
 function spawnPlayerTwo(){
 	app.playerTwo = {
 		score: 0,
@@ -273,6 +285,7 @@ function spawnPlayerTwo(){
 	}
 }
 
+// P1/P2 draws itself
 function drawPaddle(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
@@ -282,6 +295,7 @@ function drawPaddle(context, obj) {
     context.restore();
 }
 
+// ball draws itself
 function drawBall(context, obj) {
     context.save();
     context.translate(obj.position.x, obj.position.y);
@@ -295,8 +309,8 @@ function drawBall(context, obj) {
     context.restore();
 }
 
+// button inputs
 function myKeyDown(e){
-	// e.preventDefault();
 	if (e.keyCode === 38){
 		e.preventDefault();
 		playerOnePressUp();

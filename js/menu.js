@@ -2,12 +2,14 @@
 $('#twoPlayerButton').click(pickTwoPlayer);
 $('#onePlayerButton').click(pickOnePlayer);
 
+//start one player mode
 function pickOnePlayer(){
 	$('#menuCanvas').hide();
 	$('#gameCanvas').focus();
 	restartGame();
 	startAI();
 }
+//start two player mode
 function pickTwoPlayer(){
 	$('#menuCanvas').hide();
 	$('#gameCanvas').focus();
