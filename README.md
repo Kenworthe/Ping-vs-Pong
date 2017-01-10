@@ -12,7 +12,7 @@ For this project, I used HTML5 canvas, Javascript, and **the power of math** to 
 
 The ball will curve up or down at different velocities depending on how you hit it with your paddle. This allows for some pretty crazy volleys once the speed picks up. Trick shots and mind games galore!
 
-## Play it here: 
+## Play it here: (works best on Chrome!)
 
 https://ping-vs-pong.firebaseapp.com/
 
