@@ -18,6 +18,10 @@ a {
 }
 
 body {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -73,6 +77,10 @@ body {
 } */
 
 header {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	width: 100%;
 	flex-direction: row;
@@ -103,6 +111,10 @@ header div:hover{
 }
 div.modalcontent {
 	padding: 15px;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -128,6 +140,10 @@ p {
 div.controls {
 	margin: 2px 0;
 	padding: 5px;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -154,9 +170,15 @@ h1 span {
 }
 
 section {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	width: 720px;
+	height: auto;
 }
 canvas {
  	border: 2px solid #DDDDE5;
@@ -168,6 +190,10 @@ div {
 }
 
 .fakecanvas {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -226,6 +252,10 @@ div {
 .controls {
 	margin: 15px auto;
 
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  	display: -ms-flexbox;      /* TWEENER - IE 10 */
+  	display: -webkit-flex;     /* NEW - Chrome */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -239,7 +269,7 @@ div {
 }
 
 #scoreCanvas {
-	position:  static;
+	position:  absolute;
 }
 #gameCanvas {
 	position: absolute;
