@@ -12,7 +12,7 @@ For this project, I used HTML5 canvas, Javascript, and **the power of math** to 
 
 The ball will curve up or down at different velocities depending on how you hit it with your paddle. This allows for some pretty crazy volleys once the speed picks up. Trick shots and mind games galore!
 
-## Play it here: 
+## Play it here: (works best on Chrome!)
 
 https://ping-vs-pong.firebaseapp.com/
 
@@ -69,15 +69,13 @@ Music by: Deceased Superior Technician (http://opengameart.org/content/railjet-l
 *************************
 ## Notes: 
 
-- Adding paddle UP/DOWN inputs was easy.
-- Hitbox detection was hard.
-- Current AI is impossible: it "cheats" because paddle.pos.y = ball.pos.y; need to make it abide by default movement.
-- Need to add paddle upper-half & lower-half collision animation.
-- Not sure how to implement paddle LEFT/RIGHT action.
-- Added curve by changing the speed of y (rate of change).
+- Hitbox detection was hard. Need to improve it in the future.
+- Added curve by changing the speed of y (rate of change of rate of change).
 - Curves supposed to mimick forehand/backhand swing by a table tennis player.
-- Want to put entirety of app in single canvas... Issues: rendering UI constantly. Workaround: two canvases, one for menu, one for game. then swap. but at that point, might as well just use a div and manipulate DOM. (which I did).
+- Originally wanted to put entirety of app in single canvas. Issues: rendering UI constantly. Workaround: two canvases, one for menu and one for game. Then swap. But at that point, might as well just use a div and manipulate DOM. (which I did).
 - Music, sounds, and fonts are all open source.
+- Adding paddle upper-half & lower-half collision animation.
+- Adding paddle LEFT/RIGHT action in the future. Not sure what to implement though.
 - Adding ball trail in the future: http://rectangleworld.com/blog/archives/tag/fading
 
 *************************
@@ -93,3 +91,4 @@ Music by: Deceased Superior Technician (http://opengameart.org/content/railjet-l
 
 ***************************
 
+trello: https://trello.com/b/Ey7OFFJ3/ga-wdi-project-1
