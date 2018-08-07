@@ -8,7 +8,7 @@
 
 Pong with curves! 
 
-For this project, I used HTML5 canvas, Javascript, and **the power of math** to create the physics and game logic.
+HTML5 canvas, Javascript, and **the power of math** for the physics.
 
 The ball will curve up or down at different velocities depending on how you hit it with your paddle. This allows for some pretty crazy volleys once the speed picks up. Trick shots and mind games galore!
 
@@ -41,14 +41,6 @@ Player 2: W, S
 
 **Libraries:** 
 * jQuery
-
-**Hosting:** 
-* Firebase
-
-**Tools:** 
-* Git/GitHub
-* Sublime Text 3
-* Trello
 
 **Resources:** 
 * https://developer.mozilla.org/en-US/docs/Games/Anatomy
@@ -87,8 +79,4 @@ Music by: Deceased Superior Technician (http://opengameart.org/content/railjet-l
 
 3. **FIXED** KeyDown is attached to entire window... pressing UP/DOWN will scroll entire window.  BUT using "e.preventDefault();" prevents ANY shortcuts, like cmd+R to refresh, from working at all. EDIT: Fixed by just attaching event handlers to app.canvas instead of window. And abundant use of  app.canvas focus().
 
-4. endGame() function will fail to prevent ball from moving if there is a setTimeout(spawnBall).  I tried using clearTimeout(spawnBall) but it didn't work.
-
-***************************
-
-trello: https://trello.com/b/Ey7OFFJ3/ga-wdi-project-1
+4. endGame() function will fail to prevent ball from moving if there is a setTimeout(spawnBall).  I tried using clearTimeout(spawnBall) but it didn't work. Need to revisit.
